@@ -1,0 +1,6 @@
+esp8266:
+    board: d1_mini
+
+wifi:
+    ssid: !secret WiFi_SSID
+    password: !secret WiFi_Pass
