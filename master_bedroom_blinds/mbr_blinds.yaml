@@ -1,0 +1,59 @@
+esphome:
+  name: mbr_blind_controller
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret mbr_blinds_ota
+
+ota:
+  password: !secret mbr_blinds_ota
+
+wifi:
+  ssid: !secret WiFi_SSID
+  password: !secret WiFi_Pass
+
+# Blinds Up
+output:
+  - platform: gpio
+    pin: D1
+    id: left_button_up
+  - platform: gpio
+    pin: D2
+    id: left_button_stop
+  - platform: gpio
+    pin: D3
+    id: left_button_down  
+  - platform: gpio
+    pin: D1
+    id: right_button_up
+  - platform: gpio
+    pin: D2
+    id: right_button_stop
+  - platform: gpio
+    pin: D3
+    id: right_button_down     
+    
+
+button:
+  - platform: output
+    name: "Left Blinds Up"
+    id: lbu_button
+    output: left_button_up
+    duration: 500ms
+  - platform: output
+    name: "Left Blinds Stop"
+    id: lbs_button
+    output: left_button_stop
+    duration: 500ms
+  - platform: output
+    name: "Left Blinds Down"
+    output: left_button_down
+    id: lbd_button
+    duration: 500ms        
+    
